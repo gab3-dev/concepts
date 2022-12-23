@@ -26,7 +26,7 @@ fn main() {
 
     println!("{float}");
 
-    let months = [
+    let _months = [
         "January",
         "February",
         "March",
@@ -42,10 +42,10 @@ fn main() {
     ];
 
     // here are an array being declared
-    let a: [i32; 5] = [1, 2, 3, 4, 5];
+    let _a: [i32; 5] = [1, 2, 3, 4, 5];
 
     // this code is equals to 'let a = [3, 3, 3, 3, 3];'
-    let a = [3; 5];
+    let _a = [3; 5];
 
     {
         let x = x * 2;
