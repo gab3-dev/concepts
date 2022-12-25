@@ -2,17 +2,19 @@ use std::thread;
 use std::time::Duration;
 
 fn main() {
-    thread::spawn(|| {
+    let handle = thread::spawn(|| {
         for i in 0..12 {
             print_months(i);
+            thread::sleep(Duration::from_millis(1));
         }
-        thread::sleep(Duration::from_millis(1));
     });
 
     for i in 0..7 {
         print_days(i);
         thread::sleep(Duration::from_millis(1));
     }
+
+    handle.join().unwrap();
 }
 
 fn print_months(i: usize) {
@@ -31,7 +33,7 @@ fn print_months(i: usize) {
         "December",
     ];
     let month = months[i];
-    println!("{month}");
+    println!("{month} and {i}");
 }
 
 fn print_days(i: usize) {
@@ -46,5 +48,5 @@ fn print_days(i: usize) {
     ];
 
     let day = days[i];
-    println!("{day}");
+    println!("{day} and {i}");
 }
