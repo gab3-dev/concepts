@@ -3,15 +3,19 @@ use std::time::Duration;
 
 fn main() {
     thread::spawn(|| {
-        print_months();
+        for i in 0..12 {
+            print_months(i);
+        }
         thread::sleep(Duration::from_millis(1));
     });
 
-    print_days();
-    thread::sleep(Duration::from_millis(1));
+    for i in 0..7 {
+        print_days(i);
+        thread::sleep(Duration::from_millis(1));
+    }
 }
 
-fn print_months() {
+fn print_months(i: usize) {
     let months: [&str; 12] = [
         "January",
         "February",
@@ -26,14 +30,11 @@ fn print_months() {
         "November",
         "December",
     ];
-
-    for i in 0..12 {
-        let month = months[i];
-        println!("{month}");
-    }
+    let month = months[i];
+    println!("{month}");
 }
 
-fn print_days() {
+fn print_days(i: usize) {
     let days: [&str; 7] = [
         "Monday",
         "Tuesday",
@@ -44,8 +45,6 @@ fn print_days() {
         "Sunday",
     ];
 
-    for i in 0..7 {
-        let day = days[i];
-        println!("{day}");
-    }
+    let day = days[i];
+    println!("{day}");
 }
